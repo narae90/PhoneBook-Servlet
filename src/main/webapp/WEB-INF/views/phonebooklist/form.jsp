@@ -15,7 +15,8 @@ List<PhoneBookVO> list = (List<PhoneBookVO>)request.getAttribute("list");
 <title>Phone Book (Model 2)</title>
 </head>
 <body>
-	<h1>주소</h1>
+	<h1>주소록 Servlet</h1>
+	<h4> 목록</h4>
 	
 	검색어<input type="hidden" name="a" value="search" />
 		<input type="text" name="name" id="name" />
@@ -56,9 +57,7 @@ List<PhoneBookVO> list = (List<PhoneBookVO>)request.getAttribute("list");
 		<a href="<%= request.getContextPath() %>/pb?a=form">새 주소 추가</a>
 	</p>
 	
-		<p>
-		<a href="<%= request.getContextPath() %>/phonebooklist">Home</a>
-	</p>
+
 	
 	
 	
