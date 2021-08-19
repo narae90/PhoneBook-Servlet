@@ -25,9 +25,9 @@ List<PhoneBookVO> list = (List<PhoneBookVO>)request.getAttribute("list");
 	
 	<table border="1" width="800">
 		<tr bgcolor=#D5D5D5>
-	 		<th >이름</th>
-	 		<th >휴대전화</th>
-	 		<th >집전화</th>	 		
+	 		<th width="100" >이름</th>
+	 		<th width="300">휴대전화</th>
+	 		<th width="300">집전화</th>	 		
 	 		<th >도구</th>
 			
 		</tr>
@@ -35,17 +35,17 @@ List<PhoneBookVO> list = (List<PhoneBookVO>)request.getAttribute("list");
 	<% for (PhoneBookVO vo: list) { %>
 	<table border=1 width="800">	
 		<tr>
-			<td><center><%= vo.getName() %></center></center></td>
-			<td><center><%= vo.getHp() %></center></td>
-			<td><center><%= vo.getTel() %></center></td>
-			<td colspan="2">
+			<td width="100"><center><%= vo.getName() %></center></center></td>
+			<td width="300"><center><%= vo.getHp() %></center></td>
+			<td width="300"><center><%= vo.getTel() %></center></td>
+			<td colspan="2" align="center">
 				<form action="<%= request.getContextPath() %>/pb"
 					method="POST">
 					<input type="hidden" name="a" value="delete" />
 					<input type="hidden" name="id" value="<%= vo.getId() %>" />	
-					<input type="submit" value="삭제" />
+					<input type="submit" value="삭제" style= />
 				</form>
-			</td>
+			
 		</tr>
 	</table>
 	
