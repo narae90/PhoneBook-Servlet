@@ -21,6 +21,7 @@ List<PhoneBookVO> list = (List<PhoneBookVO>)request.getAttribute("list");
 		<input type="text" name="name" id="name" />
 		<input type="submit" value="검색" />
 		
+		
 
 	
 	<table border="1" width="800">
