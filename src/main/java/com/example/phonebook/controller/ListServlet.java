@@ -17,6 +17,7 @@ import com.example.phonebook.dao.PhoneBookDAOImpl;
 import com.example.phonebook.vo.PhoneBookVO;
 
 
+
 @WebServlet("/pb")
 
 public class ListServlet extends HttpServlet{
@@ -60,28 +61,28 @@ public class ListServlet extends HttpServlet{
 		String actionName = req.getParameter("a");
 		
 		if("add".equals(actionName)){ // a= add
-			String Name = req.getParameter("name");
-			String Hp = req.getParameter("hp");
-			String Tel = req.getParameter("tel");
+			String name = req.getParameter("name");
+			String hp = req.getParameter("hp");
+			String tel = req.getParameter("tel");
 			
 			// VO 객체 생성
 			PhoneBookVO vo = new PhoneBookVO();
-			vo.setName(Name);
-			vo.setHp(Hp);
-			vo.setTel(Tel);
+			vo.setName(name);
+			vo.setHp(hp);
+			vo.setTel(tel);
 			
 			// insert 처리
 			PhoneBookDAO dao = new PhoneBookDAOImpl();
-			boolean insertedCount = dao.insert(vo);
+			int insertedCount = dao.insert(vo);
 			
 			// 처리후 list페이지로 리다이렉트
 			resp.sendRedirect(req.getContextPath() + "/pb");
 		} else if("delete".equals(actionName)) {
 			//a=delete
-			Long Id = Long.valueOf(req.getParameter("Id"));
+			Long id = Long.valueOf(req.getParameter("id"));
 			
 			PhoneBookDAO dao = new PhoneBookDAOImpl();
-			int deletedCount = dao.delete(Id);
+			int deletedCount = dao.delete(id);
 			
 			// 리스트 페이지로 리다이렉트
 			resp.sendRedirect(req.getContextPath() + "/pb");

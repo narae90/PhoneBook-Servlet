@@ -3,9 +3,6 @@
     
 <%@page import="java.util.List"%>
 
-
-    
-
     
 <!DOCTYPE html>
 <html>
@@ -41,7 +38,7 @@
 
 	
 	 	
-	 	<p><a href="/web/pb">새 주소 추가</a></p>
+	 	<p><a href="<%= request.getContextPath() %>/pb?a=index">새 주소 추가</a></p>
 	 	
 	 	
 

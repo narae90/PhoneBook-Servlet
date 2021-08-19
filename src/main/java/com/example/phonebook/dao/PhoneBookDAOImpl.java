@@ -50,7 +50,11 @@ public class PhoneBookDAOImpl implements PhoneBookDAO {
 				String hp = rs.getString(3);
 				String tel = rs.getString(4);
 				
-				PhoneBookVO vo = new PhoneBookVO(id, name, hp, tel);
+				PhoneBookVO vo = new PhoneBookVO();
+				vo.setId(id);
+				vo.setHp(hp);
+				vo.setName(name);
+				vo.setTel(tel);
 				
 				list.add(vo);
 			}
@@ -78,10 +82,8 @@ public class PhoneBookDAOImpl implements PhoneBookDAO {
 		
 		try {
 			conn = getConnection();
-			String sql = "SELECT id, name, hp, tel FROM PhoneBook " +
-					" WHERE name LIKE ?";
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, "%" + keyword + "%");
+			pstmt = conn.prepareStatement("SELECT io, name, hp, tel FROM PhoneBook WHERE name LIKE ?");
+			pstmt.setString(1, "%"+keyword+"%");
 			
 			rs = pstmt.executeQuery();
 			
@@ -92,7 +94,7 @@ public class PhoneBookDAOImpl implements PhoneBookDAO {
 				String hp = rs.getString(3);
 				String tel = rs.getString(4);
 				
-				PhoneBookVO vo = new PhoneBookVO(id,name, hp, tel);
+				PhoneBookVO vo = new PhoneBookVO();
 				list.add(vo);
 			}
 		} catch (SQLException e) {
@@ -109,14 +111,9 @@ public class PhoneBookDAOImpl implements PhoneBookDAO {
 		return list;
 	}
 
-	@Override
-	public PhoneBookVO get(Long id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
-	public boolean insert(PhoneBookVO vo) {
+	public int insert(PhoneBookVO vo) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		int insertedCount = 0;
@@ -124,8 +121,12 @@ public class PhoneBookDAOImpl implements PhoneBookDAO {
 		try {
 			conn = getConnection();
 			// 실행 계획 // 잘 모르겠음
-			String sql = "INSERT into PhoneBook " + " VALUES(seq_id.NEXTVAL, ?, ?,?)";
-			pstmt = conn.prepareStatement(sql); // 준비
+			
+			
+			pstmt = conn.prepareStatement("INSERT INTO PhoneBook (id, name, hp, tel) "
+					+ " VALUES(seq_PhoneBook.NEXTVAL, ?, ?, ?)");
+						
+
 //			pstmt.setLong(1, vo.getId());
 			pstmt.setString(1, vo.getName());
 			pstmt.setString(2, vo.getHp());
@@ -144,7 +145,7 @@ public class PhoneBookDAOImpl implements PhoneBookDAO {
 			}
 		}
 	
-		return 1 == insertedCount;
+		return insertedCount;
 		}
 
 
@@ -157,8 +158,9 @@ public class PhoneBookDAOImpl implements PhoneBookDAO {
 
 		try {
 			conn = getConnection();
-			String sql = "DELETE FROM PhoneBook " + " WHERE id = ?";
-			pstmt = conn.prepareStatement(sql);
+			
+			pstmt = conn.prepareStatement("DELETE FROM PhoneBook WHERE no = ?");
+			pstmt.setLong(1, deletedCount);
 			pstmt.setLong(1, id);
 
 			deletedCount = pstmt.executeUpdate();

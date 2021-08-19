@@ -1,34 +1,62 @@
+<%@page import="com.example.phonebook.vo.PhoneBookVO"%>
+<%@page import="java.util.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+List<PhoneBookVO> list = (List<PhoneBookVO>)request.getAttribute("list");
+%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>주소록 등록</title>
+<title>Phone Book (Model 2)</title>
 </head>
 <body>
-	<h1>주소록 Servlet</h1>
-	<p>새 주소록 등록</p>
-	<!-- action: 요청을 처리할 페이지(서블릿/JSP)
-		method: 요청 방식 -->
-	<form action="<%= request.getContextPath() %>/pb"
-		method="POST">
-		<!-- hidden은 사용자 입력은 아니지만 전송해야 할 데이터 -->
-		<input type="hidden" value="add" name="a" />
-		<label for="name">이름</label>
-		<input type="text" name="name" id="name" /><br />
-		<label for="hp">휴대전화</label>
-		<input type="text" name="hp" id="hp" /><br />
-		<label for="tel">집전화</label>
-		<input type="text" name="tel" id="tel" /><br />
-		
-		<!-- 전송 버튼 -->
-		<input type="submit" value="등록" />
+	<h1>주소</h1>
+	
+	검색어<input type="hidden" name="a" value="find" />
+		<input type="text" name="name" id="name" />
+		<input type="submit" value="검색" />
+	<% for (PhoneBookVO vo: list) { %>
+	<table border="1">
+		<tr>
+			<td><%= vo.getName() %></td>
+			<td><%= vo.getHp() %></td>
+			<td><%= vo.getTel() %></td>
+		</tr>
+	</table>
+	<% } %>
 	</form>
 	
-	<!-- 리스트로 돌아가기  -->
+	<table border="1">
+		<tr>
+			<td>이름</td>
+			<td>휴대전화</td>
+			<td>집번호</td>
+			<td>도구</td>
+		</tr>
+	</table>
+	<% for (PhoneBookVO vo: list) { %>
+	<table border="1">
+		<tr>
+			<td><%= vo.getName() %></td>
+			<td><%= vo.getHp() %></td>
+			<td><%= vo.getTel() %></td>
+			<td colspan="2">
+				<form action="<%= request.getContextPath() %>/pb"
+					method="POST">
+					<input type="hidden" name="a" value="delete" />
+					<input type="hidden" name="no" value="<%= vo.getId() %>" />	
+					<input type="submit" value="삭제" />
+				</form>
+			</td>
+		</tr>
+	</table>
+	<br />
+	<% } %>
+
 	<p>
-		<a href="<%= request.getContextPath() %>/pb/">목록 보기</a>
+		<a href="<%= request.getContextPath() %>/pb?a=index">새 주소 추가</a>
 	</p>
 </body>
 </html>
