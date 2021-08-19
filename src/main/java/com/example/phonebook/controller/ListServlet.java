@@ -30,7 +30,7 @@ public class ListServlet extends HttpServlet{
 		
 		if("form".equals(actionName)) {
 			// a=form이면
-			RequestDispatcher rd = getServletContext().getRequestDispatcher("/WEB-INF/views/phonebooklist/form.jsp");
+			RequestDispatcher rd = getServletContext().getRequestDispatcher("/WEB-INF/views/phonebooklist/index.jsp");
 			// 전달
 			rd.forward(req, resp);
 			
@@ -45,7 +45,7 @@ public class ListServlet extends HttpServlet{
 		//JSP로 요청을 전달 (FORWARD)
 		
 		//Dispatcher 확보
-		RequestDispatcher rd = getServletContext().getRequestDispatcher("/WEB-INF/views/phonebooklist/index.jsp");
+		RequestDispatcher rd = getServletContext().getRequestDispatcher("/WEB-INF/views/phonebooklist/form.jsp");
 		// FORWARD
 		rd.forward(req, resp);
 		}

@@ -3,6 +3,7 @@
     
 <%@page import="java.util.List"%>
 
+
     
 <!DOCTYPE html>
 <html>
@@ -17,12 +18,10 @@
 
 		<form action="hs" method="POST">
 		<label for="keyword">검색어</label>
-	 	<input type="text" name="keyword" id="keyword" />	 	
+	 	<input type="text" name="name" id="name" />	 	
 	 	<input type="submit" value="검색" />
 	 	
-	 	
-	<!-- 이메일 리스트: 목록 -->
-	<!-- 루프 시작 -->
+
 	
 
 	 <table border=2 width="800">	
@@ -33,12 +32,13 @@
 	 		<th >집전화</th>	 		
 	 		<th >도구</th>
 
+		</tr>
 	 </table>
-	 
+
 
 	
 	 	
-	 	<p><a href="<%= request.getContextPath() %>/pb?a=index">새 주소 추가</a></p>
+	 	<p><a href="<%= request.getContextPath() %>/pb?a=index">목록보기</a></p>
 	 	
 	 	
 

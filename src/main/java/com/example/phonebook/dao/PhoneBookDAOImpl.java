@@ -40,8 +40,8 @@ public class PhoneBookDAOImpl implements PhoneBookDAO {
 			conn = getConnection();
 			stmt = conn.createStatement();
 
-			String sql = "SELECT id, name, hp, tel " + " FROM PhoneBook";
-			rs = stmt.executeQuery(sql);
+			rs = stmt.executeQuery("SELECT id, name, hp, tel FROM PhoneBook ORDER BY id DESC");
+			
 			
 			// 루프 : 객체화
 			while(rs.next()) {
@@ -82,7 +82,7 @@ public class PhoneBookDAOImpl implements PhoneBookDAO {
 		
 		try {
 			conn = getConnection();
-			pstmt = conn.prepareStatement("SELECT io, name, hp, tel FROM PhoneBook WHERE name LIKE ?");
+			pstmt = conn.prepareStatement("SELECT id, name, hp, tel FROM PhoneBook WHERE name LIKE ?");
 			pstmt.setString(1, "%"+keyword+"%");
 			
 			rs = pstmt.executeQuery();
@@ -124,7 +124,7 @@ public class PhoneBookDAOImpl implements PhoneBookDAO {
 			
 			
 			pstmt = conn.prepareStatement("INSERT INTO PhoneBook (id, name, hp, tel) "
-					+ " VALUES(seq_PhoneBook.NEXTVAL, ?, ?, ?)");
+					+ " VALUES(seq_PhoneBook_pk.NEXTVAL, ?, ?, ?)");
 						
 
 //			pstmt.setLong(1, vo.getId());
@@ -159,7 +159,7 @@ public class PhoneBookDAOImpl implements PhoneBookDAO {
 		try {
 			conn = getConnection();
 			
-			pstmt = conn.prepareStatement("DELETE FROM PhoneBook WHERE no = ?");
+			pstmt = conn.prepareStatement("DELETE FROM PhoneBook WHERE id = ?");
 			pstmt.setLong(1, deletedCount);
 			pstmt.setLong(1, id);
 

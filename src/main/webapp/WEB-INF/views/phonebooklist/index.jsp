@@ -23,7 +23,7 @@
 	</form>
 	
 	<p>
-		<a href="<%= request.getContextPath() %>/phonebooklist/">목록 보기</a>
+		<a href="<%= request.getContextPath() %>/pb?a=index">목록 보기</a>
 	</p>
 	
 
