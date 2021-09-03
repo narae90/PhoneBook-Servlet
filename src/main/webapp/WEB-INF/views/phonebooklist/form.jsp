@@ -13,6 +13,7 @@ List<PhoneBookVO> list = (List<PhoneBookVO>)request.getAttribute("list");
 <head>
 <meta charset="UTF-8">
 <title>Phone Book (Model 2)</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
 </head>
 <body>
 	<h1>주소록 Servlet</h1>
