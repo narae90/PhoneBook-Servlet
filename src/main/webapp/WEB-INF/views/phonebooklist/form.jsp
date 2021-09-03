@@ -16,8 +16,11 @@ List<PhoneBookVO> list = (List<PhoneBookVO>)request.getAttribute("list");
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
 </head>
 <body>
-	<h1>주소록 Servlet</h1>
-	<h4> 목록</h4>
+	
+	<figure class="text-center" style="margin-top: 200px">
+		<blockquote class="blockquote">
+		<h1>주소록 List</h1>
+	</blockquote>
 	
 	검색어<input type="hidden" name="a" value="search" />
 		<input type="text" name="name" id="name" />
@@ -26,19 +29,18 @@ List<PhoneBookVO> list = (List<PhoneBookVO>)request.getAttribute("list");
 		
 
 	
-	<table border="1" width="800">
+	<table border="1" width="800"  style="margin-left: auto; margin-right: auto;">
 		<tr bgcolor=#D5D5D5>
 	 		<th width="100" >이름</th>
 	 		<th width="300">휴대전화</th>
 	 		<th width="300">집전화</th>	 		
 	 		<th >도구</th>
-			
 		</tr>
 	</table>
 	<% for (PhoneBookVO vo: list) { %>
-	<table border=1 width="800">	
+	<table border=1 width="800"  style="margin-left: auto; margin-right: auto;">	
 		<tr>
-			<td width="100"><center><%= vo.getName() %></center></center></td>
+			<td width="100" ><center><%= vo.getName() %></center></center></td>
 			<td width="300"><center><%= vo.getHp() %></center></td>
 			<td width="300"><center><%= vo.getTel() %></center></td>
 			<td colspan="2" align="center">
@@ -50,13 +52,14 @@ List<PhoneBookVO> list = (List<PhoneBookVO>)request.getAttribute("list");
 				</form>
 			
 		</tr>
-	</table>
+	</table> 
+
 	
 	<% } %>
 
-	<p>
-		<a href="<%= request.getContextPath() %>/pb?a=form">새 주소 추가</a>
-	</p>
+
+		<br><a href="<%= request.getContextPath() %>/pb?a=form">새 주소 추가</a>
+
 	
 
 	

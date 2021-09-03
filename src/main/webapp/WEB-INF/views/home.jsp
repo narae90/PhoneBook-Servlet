@@ -16,6 +16,10 @@
 	<h1> 주소록 Servlet</h1>
 	<h4> 목록</h4>
 
+
+
+
+
 		<form action="hs" method="POST">
 		<label for="keyword">검색어</label>
 	 	<input type="text" name="name" id="name" />	 	
@@ -24,7 +28,7 @@
 
 	
 
-	 <table border=2 width="800">	
+	 <table border=2 width="800" >	
 	 
 	 	<tr bgcolor=#D5D5D5>
 	 		<th >이름</th>

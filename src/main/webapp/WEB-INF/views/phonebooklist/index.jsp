@@ -7,23 +7,29 @@
 <title>주소록</title>
 <!-- CSS only -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
 </head>
+
 <body>
-	<h1>새 주소 등록</h1> <br />
+	
+	<figure class="text-center" style="margin-top: 200px">
+  <blockquote class="blockquote">
+    <h1>새 주소록 등록</h1>
+  </blockquote>
 		
 		
 <form action="<%= request.getContextPath() %>/pb" method="POST">
 <input type="hidden" value="add" name="a" />
 
-  <div class="col-md-2">
+  <div class="col-md-2" style="margin-left: auto; margin-right: auto;">
     <label for="name" >이름</label>
     <input type="text" class="form-control" name= "name" id="name"><br />
   </div>
-  <div class="col-2">
+  <div class="col-2" style="margin-left: auto; margin-right: auto;">
     <label for="inputAddress" class="form-label">휴대전화</label>
     <input type="text" class="form-control" name="hp" id="hp" placeholder="숫자를 입력하세요."><br />
   </div>
-  <div class="col-2">
+  <div class="col-2" style="margin-left: auto; margin-right: auto;">
     <label for="inputAddress2" class="form-label">집전화</label>
     <input type="text" class="form-control" name="tel" id="tel" placeholder="숫자를 입력하세요." /><br />
   </div>
